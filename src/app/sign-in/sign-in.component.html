@@ -1,0 +1,33 @@
+<form [formGroup]="signInForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="signIn-card">
+    <mat-card-header>
+      <mat-card-title>Sign-In</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Email" formControlName="username" required>
+            <mat-error>
+              Please provide a valid email address
+            </mat-error>
+          </mat-form-field>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput type="password" placeholder="Password" formControlName="password" required>
+            <mat-error >
+              Please provide a valid password
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">Login</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

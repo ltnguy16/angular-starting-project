@@ -1,0 +1,49 @@
+.full-width-table {
+  width: 100%;
+}
+
+.form {
+  min-height: 56px;
+  max-height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 8px 24px 0;
+  font-size: 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid transparent;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  flex-grow: 1;
+  margin-top: 8px;
+}
+
+.mat-row:hover {
+  background-color: #898fd4;
+  cursor: pointer;
+}
+
+.w-20{
+  width: 20%;
+}
+
+.icon-Cell{
+  display:flex !important;
+  justify-content:flex-end !important;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0,0,0,.12);
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+mat-icon {
+  color: #ff4081;
+}
+
+.change:hover {
+  color: #1a27b6;
+  cursor: pointer;
+}
+

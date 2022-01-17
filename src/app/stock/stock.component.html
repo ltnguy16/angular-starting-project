@@ -1,0 +1,62 @@
+<div class="container mat-elevation-z8">
+  <div class="form">
+    
+    <mat-form-field >
+      <input matInput #filter (keyup)="applyFilter(this.filter.value)" placeholder="Search">
+      <button mat-button matSuffix mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" #mytable class="full-width-table" matSort aria-label="Stocks">
+    <ng-container matColumnDef="name">
+      <th class="w-20" mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td class="w-20" mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th class="w-20" mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+      <td class="w-20" mat-cell *matCellDef="let row">{{row.type}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th class="w-20" mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+      <td class="w-20" mat-cell *matCellDef="let row">{{row.price | currency}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <th class="w-20" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+      <td class="w-20" mat-cell *matCellDef="let row">{{row.quantity}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell class="icon-Cell" *matHeaderCellDef>
+        <button mat-icon-button color="primary" (click)="addNew()">
+          <mat-icon class="change" aria-label="Example icon-button with a heart icon">add</mat-icon>
+        </button>
+      </mat-header-cell>
+      <mat-cell class="icon-Cell" *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="accent" (click)="startEdit(row.name, row.type, row.price, row.quantity)">
+          <mat-icon class="change" aria-label="Edit">mode</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="deleteItem(row.name, row.type, row.price, row.quantity)">
+          <mat-icon class="change" aria-label="Delete">delete_forever</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource.data.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]"
+      aria-label="Select page">
+  </mat-paginator>
+</div>

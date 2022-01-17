@@ -1,0 +1,29 @@
+.full-width {
+  width: 100%;
+}
+
+.signIn-card {
+  max-width: 400px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.mat-radio-button {
+  display: block;
+  margin: 5px 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+

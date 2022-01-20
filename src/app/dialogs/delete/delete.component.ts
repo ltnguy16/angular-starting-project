@@ -2,6 +2,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
 import { ProductService } from 'src/app/product.service'; 
 
+
 @Component({
   selector: 'app-delete',
   templateUrl: './delete.component.html',

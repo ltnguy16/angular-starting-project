@@ -35,12 +35,12 @@ export class StockComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
+
       this.productService.getProducts().subscribe(x=> {
+        this.dataSource.data = x;
         this.dataSrc = x;
-         x.forEach( y => {
-           console.log(JSON.stringify(y));
-         })  
        });
+       
   }
  
   constructor(private productService: ProductService, public dialog: MatDialog,) {}
@@ -53,7 +53,6 @@ export class StockComponent implements OnInit, AfterViewInit {
   }
 
   applyFilter(filterStr: string) {
-    
     this.dataSource.filter = filterStr;
   }
 

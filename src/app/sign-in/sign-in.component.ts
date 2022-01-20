@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-sign-in',
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
 export class SignInComponent {
 
 
-  signInForm = this.fb.group({
+  signInForm =  this.fb.group({
     username: [null, Validators.email],
     password: [null, Validators.required],
   });

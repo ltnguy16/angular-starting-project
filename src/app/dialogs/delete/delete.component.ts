@@ -18,6 +18,6 @@ export class DeleteDialogComponent {
   }
 
   confirmDelete(): void {
-    this.productService.deleteProduct(this.data.name);
+    this.productService.deleteProduct(this.data.id);
   }
 }

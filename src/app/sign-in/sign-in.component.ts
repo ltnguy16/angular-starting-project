@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ProductService } from '../product.service';
 
 
 
@@ -27,6 +28,7 @@ export class SignInComponent {
     if(this.authenticate()) 
       this.router.navigate(["/stock"]);
     else { alert("Invalid credentials"); }
+
   }
 
   authenticate(): boolean {

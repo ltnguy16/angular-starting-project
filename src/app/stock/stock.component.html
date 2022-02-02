@@ -10,37 +10,42 @@
   </div>
 
   <table mat-table [dataSource]="dataSource" #mytable class="full-width-table" matSort aria-label="Stocks">
-    <ng-container matColumnDef="name">
+    <ng-container matColumnDef="Id">
+      <th class="w-20" mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <td class="w-20" mat-cell *matCellDef="let row">{{row.ProductId}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Name">
       <th class="w-20" mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td class="w-20" mat-cell *matCellDef="let row">{{row.name}}</td>
+      <td class="w-20" mat-cell *matCellDef="let row">{{row.ProductName}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="type">
-      <th class="w-20" mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
-      <td class="w-20" mat-cell *matCellDef="let row">{{row.type}}</td>
+    <ng-container matColumnDef="Department">
+      <th class="w-20" mat-header-cell *matHeaderCellDef mat-sort-header>Department</th>
+      <td class="w-20" mat-cell *matCellDef="let row">{{row.DepartmentName}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="price">
+    <ng-container matColumnDef="Price">
       <th class="w-20" mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
-      <td class="w-20" mat-cell *matCellDef="let row">{{row.price | currency}}</td>
+      <td class="w-20" mat-cell *matCellDef="let row">{{row.Price | currency}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="quantity">
+    <ng-container matColumnDef="Quantity">
       <th class="w-20" mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
-      <td class="w-20" mat-cell *matCellDef="let row">{{row.quantity}}</td>
+      <td class="w-20" mat-cell *matCellDef="let row">{{row.Quantity}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="actions">
+    <ng-container matColumnDef="Actions">
       <mat-header-cell class="icon-Cell" *matHeaderCellDef>
         <button mat-icon-button color="primary" (click)="addNew()">
           <mat-icon class="change" aria-label="Example icon-button with a heart icon">add</mat-icon>
         </button>
       </mat-header-cell>
       <mat-cell class="icon-Cell" *matCellDef="let row; let i=index;">
-        <button mat-icon-button color="accent" (click)="startEdit(row.name, row.type, row.price, row.quantity)">
+        <button mat-icon-button color="accent" (click)="startEdit(row.ProductID, row.ProductName, row.DepartmentName, row.Price, row.Quantity)">
           <mat-icon class="change" aria-label="Edit">mode</mat-icon>
         </button>
-        <button mat-icon-button color="accent" (click)="deleteItem(row.name, row.type, row.price, row.quantity)">
+        <button mat-icon-button color="accent" (click)="deleteItem(row.ProductID, row.ProductName, row.DepartmentName, row.Price, row.Quantity)">
           <mat-icon class="change" aria-label="Delete">delete_forever</mat-icon>
         </button>
       </mat-cell>

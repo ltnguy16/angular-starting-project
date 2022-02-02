@@ -5,28 +5,36 @@
   
       <div class="form">
         <mat-form-field color="accent">
-          <input matInput #input class="form-control" placeholder="name" [(ngModel)]="data.name" name="name" required >
+          <input matInput #input class="form-control" placeholder="id" [(ngModel)]="data.ProductId" name="id" required >
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" placeholder="name" [(ngModel)]="data.ProductName" name="name" required >
           <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
       </div>
 
       <div class="form">
         <mat-form-field color="accent">
-          <textarea matInput #input class="form-control" placeholder="type" [(ngModel)]="data.type" name="type" required ></textarea>
+          <textarea matInput #input class="form-control" placeholder="department" [(ngModel)]="data.DepartmentName" name="type" required ></textarea>
           <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
       </div>
   
       <div class="form">
         <mat-form-field color="accent">
-          <input matInput #input class="form-control" placeholder="price" [(ngModel)]="data.price" name="price" required >
+          <input matInput #input class="form-control" placeholder="price" [(ngModel)]="data.Price" name="price" required >
           <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
       </div>
 
       <div Class="form">
           <mat-form-field color="accent">
-              <input matInput #input class="form-control" placeholder="quantity" [(ngModel)]="data.quantity" name="quantity" required>
+              <input matInput #input class="form-control" placeholder="quantity" [(ngModel)]="data.Quantity" name="quantity" required>
               <mat-error *ngIf="formControl.invalid">{{getErrorMessage}}</mat-error>
           </mat-form-field>
       </div>

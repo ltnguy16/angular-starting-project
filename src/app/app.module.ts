@@ -15,6 +15,7 @@ import { EditDialogComponent } from './dialogs/edit/edit.component';
 import { DeleteDialogComponent } from './dialogs/delete/delete.component';
 import { AddDialogComponent } from './dialogs/add/add.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     AngularMaterialModule, 
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   entryComponents: [
     EditDialogComponent,

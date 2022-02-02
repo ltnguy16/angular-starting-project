@@ -14,7 +14,7 @@ export class ProductService {
   dialogData: any;
   test = false;
 
-  constructor(private httpClient: HttpClient,) { }
+  constructor(private httpClient: HttpClient) { }
 
   get data(): Product[] {
     return this.dataChange.value;
@@ -47,6 +47,16 @@ export class ProductService {
     //}
   }
 
+
+  addProduct2(): Observable<any> {
+    var body = { };
+    var test = { ProductId: '2', ProductName: 'Cabbage', DepartmentName: 'Produce', Price: 4.49, Quantity: 12} as Product;
+
+    return this.httpClient.put<Product>('https://t6i6w79qca.execute-api.us-east-1.amazonaws.com/Prod/items/add', test);
+  }
+
+
+  
   updateProduct (product: Product): void {
     this.dialogData = product;
     console.log(this.dialogData);

@@ -58,6 +58,10 @@ export class StockComponent implements OnInit, AfterViewInit {
   }
 
 
+  addProduct() {
+    console.log("add product");
+    this.productService.addProduct2().subscribe(x=> {});
+  }
   addNew() {
     const dialogRef = this.dialog.open(AddDialogComponent, { 
       data: { }

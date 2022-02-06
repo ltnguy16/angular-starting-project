@@ -35,13 +35,13 @@ export class StockComponent implements OnInit, AfterViewInit {
   
 
   ngOnInit(): void {
-      var test = { ProductId: '2', ProductName: 'Cabbage', DepartmentName: 'Produce', Price: 4.49, Quantity: 12} as Product;
+      //var test = { ProductId: '2', ProductName: 'Cabbage', DepartmentName: 'Produce', Price: 4.49, Quantity: 12} as Product;
       console.log("test1");
       this.productService.getProducts().subscribe(x=> {
         this.dataSource.data = x;
         this.dataSrc = x;
        });
-      this.productService.addProduct(test);
+      //this.productService.addProduct(test);
   }
  
   constructor(private productService: ProductService, public dialog: MatDialog,) {}
@@ -60,7 +60,10 @@ export class StockComponent implements OnInit, AfterViewInit {
 
   addProduct() {
     console.log("add product");
-    this.productService.addProduct2().subscribe(x=> {});
+    //this.dataSrc.push(this.productService.addProduct2())
+    this.productService.addProduct2().subscribe(x => 
+      this.dataSrc.push(x));
+    console.log("end add")
   }
   addNew() {
     const dialogRef = this.dialog.open(AddDialogComponent, { 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Product } from './product';
 import { PRODUCTS } from './mock-products';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 
@@ -33,26 +33,36 @@ export class ProductService {
     }
   }
 
-  addProduct (product: Product): Observable<any> {
+  addProduct (product: Product): Observable<Product> {
     //this.dialogData = product;
     //if(!this.test){
       console.log('test2');
-      var test = { ProductId: '2', ProductName: 'Cabbage', DepartmentName: 'Produce', Price: 4.49, Quantity: 12} as Product;
+      //var test = { ProductId: '2', ProductName: 'Cabbage', DepartmentName: 'Produce', Price: 4.49, Quantity: 12} as Product;
       return this.httpClient.put<Product>(
          'https://t6i6w79qca.execute-api.us-east-1.amazonaws.com/Prod/items/add',
-         test,
+         product,
         
        )
-       
+       //console.log("end add")
     //}
   }
 
 
-  addProduct2(): Observable<any> {
+  addProduct2(): Observable<Product> {
     var body = { };
-    var test = { ProductId: '2', ProductName: 'Cabbage', DepartmentName: 'Produce', Price: 4.49, Quantity: 12} as Product;
-
-    return this.httpClient.put<Product>('https://t6i6w79qca.execute-api.us-east-1.amazonaws.com/Prod/items/add', test);
+    var test = { ProductId: '2', ProductName: 'Banana', DepartmentName: 'Produce', Price: 4.49, Quantity: 12} as Product;
+    /*
+    let header = new HttpHeaders()
+      .set('Content-Type','application/json')
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+      .set('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+    */
+    console.log("check");
+    return this.httpClient.put<Product>(
+      'https://t6i6w79qca.execute-api.us-east-1.amazonaws.com/Prod/items/add', 
+      test,
+      );
   }
 
 

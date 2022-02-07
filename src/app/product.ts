@@ -4,4 +4,5 @@ export interface Product{
     DepartmentName: string;
     Price: number;
     Quantity: number;
+    Type: string;
 }

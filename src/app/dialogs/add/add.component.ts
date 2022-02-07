@@ -16,7 +16,7 @@ export class AddDialogComponent {
 
   formControl = new FormControl('', [
     Validators.required
-    // Validators.email,
+    // Validators.email
   ]);
 
   getErrorMessage() {
@@ -34,6 +34,16 @@ export class AddDialogComponent {
   }
 
   public confirmAdd(): void {
-    this.productService.addProduct(this.data);
+
+    var newitem = { 
+      ProductId: this.data.ProductId,
+      ProductName: this.data.ProductName,
+      DepartmentName: this.data.DepartmentName,
+      Type: "Product",
+      Price: +this.data.Price,
+      Quantity: +this.data.Quantity,
+    } as Product;
+    
+    this.productService.addProduct(newitem).subscribe(x => x);
   }
 }

@@ -28,7 +28,7 @@ export class StockComponent implements OnInit, AfterViewInit {
 
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['Id', 'Name', 'Department', 'Price', 'Quantity', 'Actions'];
+  displayedColumns = ['Name', 'Department', 'Price', 'Quantity', 'Actions'];
   dataSource = new MatTableDataSource<Product>();
   dataSrc: Product[] = [];
   id: string = '';
@@ -57,14 +57,6 @@ export class StockComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filterStr;
   }
 
-
-  addProduct() {
-    console.log("add product");
-    //this.dataSrc.push(this.productService.addProduct2())
-    this.productService.addProduct2().subscribe(x => 
-      this.dataSrc.push(x));
-    console.log("end add")
-  }
   addNew() {
     const dialogRef = this.dialog.open(AddDialogComponent, { 
       data: { }
@@ -72,10 +64,7 @@ export class StockComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        // After dialog is closed we're doing frontend updates
-        // For add we're just pushing a new row inside DataService
-        this.dataSrc.push(this.productService.getDialogData());
-        this.refreshTable();
+        setTimeout(() => this.refreshTable(), 500);
       }
     });
   }
@@ -111,8 +100,13 @@ export class StockComponent implements OnInit, AfterViewInit {
 
   
   private refreshTable() {
+    this.productService.getProducts().subscribe(x=> {
+        this.dataSource.data = x;
+        this.dataSrc = x;
+       });
     this.paginator._changePageSize(this.paginator.pageSize);
     this.dataSource.data = this.dataSrc;
+    console.log("page refreshed");
     //alert("page refreshed")
   }
 }

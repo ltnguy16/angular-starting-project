@@ -10,11 +10,6 @@
   </div>
 
   <table mat-table [dataSource]="dataSource" #mytable class="full-width-table" matSort aria-label="Stocks">
-    <ng-container matColumnDef="Id">
-      <th class="w-20" mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-      <td class="w-20" mat-cell *matCellDef="let row">{{row.ProductId}}</td>
-    </ng-container>
-
     <ng-container matColumnDef="Name">
       <th class="w-20" mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
       <td class="w-20" mat-cell *matCellDef="let row">{{row.ProductName}}</td>
@@ -38,7 +33,7 @@
     <ng-container matColumnDef="Actions">
       <mat-header-cell class="icon-Cell" *matHeaderCellDef>
         <button mat-icon-button color="primary" (click)="addNew()">
-          <mat-icon class="change" aria-label="Example icon-button with a heart icon">add</mat-icon>
+          <mat-icon class="change" aria-label="Add">add</mat-icon>
         </button>
       </mat-header-cell>
       <mat-cell class="icon-Cell" *matCellDef="let row; let i=index;">
@@ -66,5 +61,3 @@
   </mat-paginator>
   
 </div>
-
-<button (click)="addProduct()"> TEST </button>

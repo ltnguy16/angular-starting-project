@@ -16,12 +16,12 @@ export class AddDialogComponent {
 
   formControl = new FormControl('', [
     Validators.required
-    // Validators.email
+    // Validators.email,
   ]);
 
   getErrorMessage() {
     return this.formControl.hasError('required') ? 'Required field' :
-      this.formControl.hasError('email') ? 'Not a valid email' :
+      this.formControl.hasError('email') ? 'Not a valid email' : 
         '';
   }
 
@@ -34,7 +34,6 @@ export class AddDialogComponent {
   }
 
   public confirmAdd(): void {
-
     var newitem = { 
       ProductId: this.data.ProductId,
       ProductName: this.data.ProductName,
@@ -44,6 +43,7 @@ export class AddDialogComponent {
       Quantity: +this.data.Quantity,
     } as Product;
     
-    this.productService.addProduct(newitem).subscribe(x => x);
+    this.productService.addProduct(newitem).subscribe(_ => this.dialogRef.close());
+    //Update 
   }
 }

@@ -40,13 +40,18 @@ export class ProductService {
     )
   }
 
-  updateProduct (product: Product): void {
-    this.dialogData = product;
-    console.log(this.dialogData);
+  updateProduct (product: Product): Observable<Product> {
+    return this.httpClient.put<Product>(
+      'https://t6i6w79qca.execute-api.us-east-1.amazonaws.com/Prod/items/update',
+      product,
+    )
   }
 
-  deleteProduct (name: string): void {
-    console.log(name);
+  deleteProduct (product: Product): Observable<Product> {
+    return this.httpClient.put<Product>(
+      'https://t6i6w79qca.execute-api.us-east-1.amazonaws.com/Prod/items/delete',
+      product,
+    )
   }
 
   

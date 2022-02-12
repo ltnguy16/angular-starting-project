@@ -37,10 +37,10 @@
         </button>
       </mat-header-cell>
       <mat-cell class="icon-Cell" *matCellDef="let row; let i=index;">
-        <button mat-icon-button color="accent" (click)="startEdit(row.ProductID, row.ProductName, row.DepartmentName, row.Price, row.Quantity)">
+        <button mat-icon-button color="accent" (click)="startEdit(row.ProductId, row.ProductName, row.DepartmentName, row.Price, row.Quantity)">
           <mat-icon class="change" aria-label="Edit">mode</mat-icon>
         </button>
-        <button mat-icon-button color="accent" (click)="deleteItem(row.ProductID, row.ProductName, row.DepartmentName, row.Price, row.Quantity)">
+        <button mat-icon-button color="accent" (click)="deleteItem(row.ProductId, row.ProductName, row.DepartmentName, row.Price, row.Quantity)">
           <mat-icon class="change" aria-label="Delete">delete_forever</mat-icon>
         </button>
       </mat-cell>

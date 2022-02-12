@@ -31,17 +31,15 @@ export class StockComponent implements OnInit, AfterViewInit {
   displayedColumns = ['Name', 'Department', 'Price', 'Quantity', 'Actions'];
   dataSource = new MatTableDataSource<Product>();
   dataSrc: Product[] = [];
-  id: string = '';
+  wait: number = 1000;
   
 
   ngOnInit(): void {
-      //var test = { ProductId: '2', ProductName: 'Cabbage', DepartmentName: 'Produce', Price: 4.49, Quantity: 12} as Product;
-      console.log("test1");
       this.productService.getProducts().subscribe(x=> {
         this.dataSource.data = x;
         this.dataSrc = x;
        });
-      //this.productService.addProduct(test);
+      
   }
  
   constructor(private productService: ProductService, public dialog: MatDialog,) {}
@@ -64,36 +62,31 @@ export class StockComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        setTimeout(() => this.refreshTable(), 500);
+        setTimeout(() => this.refreshTable(), this.wait);
       }
     });
   }
 
   startEdit(id: string, name: string, department: string, price: number, quantity: number) {
-    this.id = id;
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      data: {ProductID: id, ProductName: name, DepartmentName: department, Price: price, Quantity: quantity}
+      data: {ProductId: id, ProductName: name, DepartmentName: department, Price: price, Quantity: quantity}
     });
+
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        const foundIndex = this.dataSource.data.findIndex(x => x.ProductId === this.id)
-        this.dataSrc[foundIndex] = this.productService.getDialogData();
-         this.refreshTable();
+        setTimeout(() => this.refreshTable(), this.wait);
       }
     });
   }
 
   deleteItem(id: string, name: string, department: string, price: number, quantity: number) {
-    this.id = id;
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
-      data: {ProductID:id, ProductName: name, DepartmentName: department, Price: price, Quantity: quantity}
+      data: {ProductId: id, ProductName: name, DepartmentName: department, Price: price, Quantity: quantity}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        const foundIndex = this.dataSource.data.findIndex(x => x.ProductId === this.id)
-        this.dataSrc.splice(foundIndex, 1);
-        this.refreshTable();
+        setTimeout(() => this.refreshTable(), this.wait);
       }
     });
   }

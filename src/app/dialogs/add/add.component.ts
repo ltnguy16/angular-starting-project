@@ -43,7 +43,6 @@ export class AddDialogComponent {
       Quantity: +this.data.Quantity,
     } as Product;
     
-    this.productService.addProduct(newitem).subscribe(_ => this.dialogRef.close());
-    //Update 
+    this.productService.addProduct(newitem).subscribe(_ => this.productService.sendTopic("Added New Item").subscribe());
   }
 }

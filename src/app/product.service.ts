@@ -53,6 +53,12 @@ export class ProductService {
       product,
     )
   }
-
+  
+  sendTopic(message: String): Observable<String>{
+    return this.httpClient.put<String>(
+      'https://t6i6w79qca.execute-api.us-east-1.amazonaws.com/Prod/topic/add',
+      message,
+    )
+  }
   
 }
